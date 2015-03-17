@@ -27,9 +27,7 @@ public class SongListFragment extends Fragment {
         View rootView = inflater.inflate( R.layout.song_list, container, false );
 
         ListView list = (ListView) rootView.findViewById(R.id.song_list);
-        String[] canciones =  {"Item 1", "Item 2"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,canciones );
-        //ArrayAdapter<Song> adapter = new ArrayAdapter<Song>(getActivity(),android.R.layout.simple_list_item_1, songsManager.getSongs());
+        ArrayAdapter<Song> adapter = new ListAdapter<Song>(getActivity(),R.layout.song_list_row, songsManager.getSongs(rootView.getContext()));
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
