@@ -27,9 +27,9 @@ public class ArtistListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate( R.layout.song_list, container, false );
+        View rootView = inflater.inflate( R.layout.artist_list, container, false );
 
-        ListView list = (ListView) rootView.findViewById(R.id.song_list);
+        ListView list = (ListView) rootView.findViewById(R.id.artist_list);
         ArrayAdapter<Artist> adapter = new ListAdapter<Artist>(getActivity(),R.layout.artist_list_row, artistsManager.getArtists(rootView.getContext()));
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
