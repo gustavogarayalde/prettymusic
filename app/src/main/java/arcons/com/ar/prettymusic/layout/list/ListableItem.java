@@ -1,4 +1,4 @@
-package arcons.com.ar.prettymusic;
+package arcons.com.ar.prettymusic.layout.list;
 
 import android.graphics.Bitmap;
 

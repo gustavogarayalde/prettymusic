@@ -1,4 +1,4 @@
-package arcons.com.ar.prettymusic;
+package arcons.com.ar.prettymusic.layout.list;
 
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import arcons.com.ar.prettymusic.R;
 
 /**
  * Created by Gustavo on 16/03/2015.
@@ -33,8 +35,10 @@ public class ListAdapter<T extends ListableItem> extends ArrayAdapter<T> {
         TextView mainText = (TextView) rowView.findViewById(R.id.firstLine);
         mainText.setText( item.getListMainText() );
 
-        TextView secondaryText = (TextView) rowView.findViewById(R.id.secondLine);
-        secondaryText.setText( item.getListSecondaryText() );
+        if ( item.getListSecondaryText() != null && !item.getListSecondaryText().isEmpty() ){
+            TextView secondaryText = (TextView) rowView.findViewById(R.id.secondLine);
+            secondaryText.setText( item.getListSecondaryText() );
+        }
 
         if ( item.hasImage() ){
             ImageView imageView = (ImageView) rowView.findViewById(R.id.itemIcon);

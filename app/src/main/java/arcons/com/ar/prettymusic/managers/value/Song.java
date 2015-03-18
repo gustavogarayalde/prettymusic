@@ -2,7 +2,7 @@ package arcons.com.ar.prettymusic.managers.value;
 
 import android.graphics.Bitmap;
 
-import arcons.com.ar.prettymusic.ListableItem;
+import arcons.com.ar.prettymusic.layout.list.ListableItem;
 
 /**
  * Created by Gustavo on 16/03/2015.
