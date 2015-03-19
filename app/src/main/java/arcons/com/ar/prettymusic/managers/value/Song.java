@@ -2,13 +2,14 @@ package arcons.com.ar.prettymusic.managers.value;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 import arcons.com.ar.prettymusic.layout.list.ListableItem;
 
 /**
  * Created by Gustavo on 16/03/2015.
  */
-public class Song implements ListableItem{
-
+public class Song implements ListableItem, Serializable{
 
     private Bitmap art;
     private String id;
@@ -21,6 +22,46 @@ public class Song implements ListableItem{
         this.title = title;
         this.artist = artist;
         this.album = album;
+        this.art = art;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public String getId(){
+        return this.id;
+    }
+
+    public Bitmap getArt() {
+        return art;
+    }
+
+    public void setArt(Bitmap art) {
         this.art = art;
     }
 

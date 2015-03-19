@@ -5,8 +5,13 @@
     <string name="title_section2">Artistas</string>
     <string name="title_section3">Albumes</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
+    <string name="title_activity_edit_song">Editar Cancion</string>
+
+    <string name="song_title">Titulo</string>
+    <string name="song_artist">Artista</string>
+    <string name="navigation_drawer_open">Open navigation</string>
+    <string name="navigation_drawer_close">Close navigation</string>
+    <string name="song_album">Album</string>
+    <string name="save_changes">Guardar cambios</string>
 </resources>

@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 
 import java.io.File;
 
+import arcons.com.ar.prettymusic.activities.EditSongActivity;
 import arcons.com.ar.prettymusic.managers.value.Album;
 import arcons.com.ar.prettymusic.managers.value.Artist;
 
@@ -58,5 +59,29 @@ public class AlbumsManager {
             }
         }
         return art;
+    }
+
+    public String[] getAlbumsNames(Context context) {
+        //Some audio may be explicitly marked as not being music
+        String orderBy = MediaStore.Audio.Albums.ALBUM + " DESC";
+
+        String[] projection = {
+                MediaStore.Audio.Albums._ID,
+                MediaStore.Audio.Albums.ALBUM
+        };
+
+        Cursor cursor = context.getContentResolver().query(
+                MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI,
+                projection,
+                null,
+                null,
+                null);
+
+        String[] albums = new String[cursor.getCount()];
+        while(cursor.moveToNext()) {
+            albums[ cursor.getPosition() ] = cursor.getString(1);
+        }
+
+        return albums;
     }
 }

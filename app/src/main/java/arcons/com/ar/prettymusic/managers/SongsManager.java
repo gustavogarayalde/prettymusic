@@ -1,6 +1,7 @@
 package arcons.com.ar.prettymusic.managers;
 
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -55,4 +56,17 @@ public class SongsManager {
         return songs;
     }
 
+    public void updateSong(Song songToUpdate, String title, String artist, String album, Context context) {
+        ContentValues values = new ContentValues();
+
+        values.put(MediaStore.Audio.Media.TITLE, title);
+        values.put(MediaStore.Audio.Media.ALBUM, album);
+        values.put(MediaStore.Audio.Media.ARTIST, artist);
+        context.getContentResolver().update(
+                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                values,
+                MediaStore.Audio.Media._ID + "= ?",
+                new String[] { songToUpdate.getId() }
+        );
+    }
 }

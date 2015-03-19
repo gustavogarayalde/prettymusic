@@ -1,5 +1,6 @@
 package arcons.com.ar.prettymusic.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import arcons.com.ar.prettymusic.activities.EditSongActivity;
 import arcons.com.ar.prettymusic.layout.list.ListAdapter;
 import arcons.com.ar.prettymusic.R;
 import arcons.com.ar.prettymusic.managers.SongsManager;
@@ -34,8 +36,9 @@ public class SongListFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-                Toast notificacion= Toast.makeText(getActivity(),"Prueba",Toast.LENGTH_LONG);
-                notificacion.show();
+                Intent intent=new Intent(view.getContext(),EditSongActivity.class);
+                intent.putExtra("song",(Song) parent.getItemAtPosition(position));
+                startActivity(intent);
             }
         });
 
