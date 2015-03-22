@@ -29,7 +29,8 @@ public class AlbumsManager {
                 MediaStore.Audio.Albums.ALBUM,
                 MediaStore.Audio.Albums.ARTIST,
                 MediaStore.Audio.Albums.ALBUM_ART,
-                MediaStore.Audio.Albums.NUMBER_OF_SONGS
+                MediaStore.Audio.Albums.NUMBER_OF_SONGS,
+                MediaStore.Audio.Albums.ALBUM_KEY
         };
 
         Cursor cursor = context.getContentResolver().query(
@@ -43,7 +44,7 @@ public class AlbumsManager {
         while(cursor.moveToNext()) {
             Bitmap art = getArt(context, cursor.getLong(0), cursor.getString(3));
 
-            albums[ cursor.getPosition() ] = new Album( cursor.getString(0), cursor.getString(1), cursor.getString(2), art , cursor.getLong(4) );
+            albums[ cursor.getPosition() ] = new Album( cursor.getString(0), cursor.getString(1), cursor.getString(2), art , cursor.getLong(4), cursor.getString(5) );
         }
 
         return albums;
@@ -83,5 +84,33 @@ public class AlbumsManager {
         }
 
         return albums;
+    }
+
+    public Album getAlbumByName(String name, Context context) {
+
+        String[] projection = {
+                MediaStore.Audio.Albums._ID,
+                MediaStore.Audio.Albums.ALBUM,
+                MediaStore.Audio.Albums.ARTIST,
+                MediaStore.Audio.Albums.ALBUM_ART,
+                MediaStore.Audio.Albums.NUMBER_OF_SONGS,
+                MediaStore.Audio.Albums.ALBUM_KEY
+        };
+
+        String selectByName = MediaStore.Audio.Albums.ALBUM + " = ?";
+        Cursor cursor = context.getContentResolver().query(
+                MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI,
+                projection,
+                selectByName,
+                new String[]{name},
+                null);
+
+        Album[] albums = new Album[cursor.getCount()];
+        while(cursor.moveToNext()) {
+            return new Album( cursor.getString(0), cursor.getString(1), cursor.getString(2), null, cursor.getLong(4), cursor.getString(5) );
+        }
+
+        return null;
+
     }
 }

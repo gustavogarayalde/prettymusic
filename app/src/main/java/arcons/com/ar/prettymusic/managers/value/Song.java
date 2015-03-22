@@ -11,18 +11,22 @@ import arcons.com.ar.prettymusic.layout.list.ListableItem;
  */
 public class Song implements ListableItem, Serializable{
 
-    private Bitmap art;
+    private transient Bitmap art;
     private String id;
     private String title;
     private String artist;
     private String album;
+    private String artistId;
+    private int track;
 
-    public Song(String id, String title, String album, String artist, Bitmap art) {
+    public Song(String id, String title, String album, String artist, Bitmap art, String artistId, int track) {
         this.id = id;
         this.title = title;
         this.artist = artist;
         this.album = album;
         this.art = art;
+        this.artistId = artistId;
+        this.track = track;
     }
 
     public void setId(String id) {
@@ -83,5 +87,21 @@ public class Song implements ListableItem, Serializable{
     @Override
     public Bitmap getImage() {
         return art;
+    }
+
+    public String getArtistId() {
+        return artistId;
+    }
+
+    public void setArtistId(String artistId) {
+        this.artistId = artistId;
+    }
+
+    public int getTrack() {
+        return track;
+    }
+
+    public void setTrack(int track) {
+        this.track = track;
     }
 }

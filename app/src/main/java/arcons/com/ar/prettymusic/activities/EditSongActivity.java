@@ -34,6 +34,7 @@ public class EditSongActivity extends ActionBarActivity {
         setTextToInput( R.id.song_title_input, song.getTitle() );
         setTextToInput( R.id.song_artist_input, song.getArtist() );
         setTextToInput( R.id.song_album_input, song.getAlbum() );
+        setIntToInput( R.id.song_track_input, song.getTrack() );
     }
 
     @Override
@@ -65,6 +66,7 @@ public class EditSongActivity extends ActionBarActivity {
                 getInputText( R.id.song_title_input ),
                 getInputText( R.id.song_artist_input ),
                 getInputText( R.id.song_album_input ),
+                getInputInt( R.id.song_track_input ),
                 this );
     }
 
@@ -74,8 +76,18 @@ public class EditSongActivity extends ActionBarActivity {
     }
 
     // TODO: pasar a util
+    private int getInputInt(int inputId) {
+        return Integer.parseInt( ( (EditText) findViewById( inputId ) ).getText().toString() );
+    }
+
+    // TODO: pasar a util
     private void setTextToInput(int inputId, String value) {
         ( (EditText) findViewById( inputId ) ).setText( value );
+    }
+
+    // TODO: pasar a util
+    private void setIntToInput(int inputId, int value) {
+        ( (EditText) findViewById( inputId ) ).setText( String.valueOf(value) );
     }
 
     // TODO: pasar a util
